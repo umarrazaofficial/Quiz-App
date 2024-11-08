@@ -1,12 +1,8 @@
 import React from "react";
+import DashboardBanner from "../components/atoms/DashboardBanner";
 
 const dashboard = () => {
-  return (
-    <>
-      <div>dashboard</div>
-      <div>dashboard</div>
-    </>
-  );
+  return <DashboardBanner />;
 };
 
 export default dashboard;

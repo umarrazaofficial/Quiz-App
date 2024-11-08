@@ -75,7 +75,6 @@ function Login() {
                 Login
               </Button>
               <Button
-                loader={loading_user}
                 variant="white"
                 width="256px"
                 type="button"

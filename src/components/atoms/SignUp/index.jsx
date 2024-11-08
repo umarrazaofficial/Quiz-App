@@ -8,23 +8,29 @@ import { useContextHook } from "use-context-hook";
 import { AuthContext } from "../../../Context/authContext";
 import Layout from "../../Layout";
 import { useNavigate } from "react-router-dom";
+import adminService from "../../../services/adminService";
+import Toast from "../../molecules/Toast";
 
 function SignUp() {
   const [form] = useForm();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
-  const { onLogin, loading_user } = useContextHook(AuthContext, (v) => ({
-    onLogin: v.onLogin,
-    loading_user: v.loading_user,
-  }));
-
-  const handleSubmit = (e) => {
-    const payload = {
-      email: e?.email,
-      password: e?.password,
-      type: "admin",
-    };
-    onLogin(payload);
+  const handleSubmit = async (e) => {
+    setLoading(true);
+    try {
+      const payload = {
+        email: e?.email.trim(),
+        password: e?.password.trim(),
+        name: e?.name.trim(),
+      };
+      await adminService.signUp(payload);
+      setLoading(false);
+      navigate("/thank-you");
+    } catch (error) {
+      Toast({ type: "error", message: error });
+      setLoading(false);
+    }
   };
 
   return (
@@ -86,11 +92,10 @@ function SignUp() {
             </Form.Item>
 
             <div className="btn-holder">
-              <Button loader={loading_user} variant="primary" width="256px">
+              <Button loader={loading} variant="primary" width="256px">
                 Register
               </Button>
               <Button
-                loader={loading_user}
                 variant="white"
                 width="256px"
                 onClick={() => navigate("/sign-in")}

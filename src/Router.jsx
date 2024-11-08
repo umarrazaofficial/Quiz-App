@@ -6,6 +6,8 @@ import { AuthContext } from "./Context/authContext";
 import SignUp from "./components/atoms/SignUp";
 import ThankYou from "./components/atoms/ThankYou";
 import Dashboard from "./Pages/dashboard";
+import AddQuiz from "./Pages/addquiz";
+import StartQuiz from "./Pages/startquiz";
 
 const Router = () => {
   function PublicRoute({ children, redirectTo, isLoggedIn }) {
@@ -21,9 +23,7 @@ const Router = () => {
   ]);
   const redirectTo =
     allowedPages?.length > 0 ? `/${allowedPages[0]}` : "/dashboard";
-  // const loadBussinessStore = allowedPages.some(
-  //   (elem) => elem === "business-store"
-  // );
+  const loadAddQuiz = allowedPages.some((elem) => elem === "add-quiz");
   return (
     <Routes>
       <Route
@@ -32,6 +32,26 @@ const Router = () => {
           <PrivateRoute redirectTo="/" isLoggedIn={isLoggedIn}>
             <Layout showTemplate={isLoggedIn}>
               <Dashboard />
+            </Layout>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/quiz"
+        element={
+          <PrivateRoute redirectTo="/" isLoggedIn={isLoggedIn}>
+            <Layout showTemplate={isLoggedIn}>
+              <StartQuiz />
+            </Layout>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/add-quiz"
+        element={
+          <PrivateRoute redirectTo="/" isLoggedIn={loadAddQuiz}>
+            <Layout showTemplate={isLoggedIn}>
+              <AddQuiz />
             </Layout>
           </PrivateRoute>
         }

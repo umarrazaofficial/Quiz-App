@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { clearCookie, getCookie, setCookie } from "../helpers/common";
 import { createContextHook } from "use-context-hook";
 import Toast from "../components/molecules/Toast";
@@ -40,11 +40,16 @@ export function AuthContextProvider(props) {
         email,
         password,
       });
-      if (res?.isAdmin) {
+      if (res) {
         setCookie("admin", res?.isAdmin);
         setCookie("name", res?.name);
         setIsLoggedIn(true);
         setLoadingUser(false);
+        if (res?.isAdmin) {
+          setAllowedPages(["dashboard", "quiz", "add-quiz"]);
+        } else {
+          setAllowedPages(["dashboard", "quiz"]);
+        }
       } else {
         Toast({ type: "error", message: "Invalid credentials" });
         setLoadingUser(false);
@@ -55,6 +60,14 @@ export function AuthContextProvider(props) {
       Toast({ type: "error", message });
     }
   };
+  useEffect(() => {
+    if (getCookie("admin")) {
+      setAllowedPages(["dashboard", "quiz", "add-quiz"]);
+    } else {
+      setAllowedPages(["dashboard", "quiz"]);
+    }
+  }, [isLoggedIn]);
+
   return (
     <AuthContext.Provider
       value={{

@@ -8,7 +8,6 @@ const Layout = ({ children, showTemplate }) => {
     <StyledLayout $showlayout={showTemplate}>
       {showTemplate ? (
         <>
-          <br /> {/* navbar */}
           <div className="children">
             <Header />
             <Suspense fallback={<Loaders viewLoader />}>{children}</Suspense>
