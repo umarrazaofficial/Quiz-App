@@ -24,9 +24,7 @@ function Loaders({
     <>
       {pageLoader && (
         <PageLoaderWrapper>
-          <PageLoader>
-            <Logo src={logo} />
-          </PageLoader>
+          <PageLoader>{/* <Logo src={logo} /> */}</PageLoader>
         </PageLoaderWrapper>
       )}
       {loading ? (

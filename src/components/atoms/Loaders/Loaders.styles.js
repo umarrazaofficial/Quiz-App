@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from "styled-components";
 
 const spin = keyframes`
   0%,
@@ -32,7 +32,7 @@ export const PageLoaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  min-height: calc(100vh - 250px);
   width: 100%;
 `;
 
@@ -46,7 +46,7 @@ export const PageLoader = styled.div`
 
   &:before,
   &:after {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     top: 0;
@@ -107,9 +107,9 @@ export const ComponentLoader = styled.div`
 `;
 
 export const Logo = styled.img`
-  transform: rotateZ(-45deg) translateY(64px);
-  width: 38px;
-  height: 38px;
+  transform: rotateZ(-45deg) translateY(34px);
+  width: 80px;
+  height: 80px;
 `;
 
 const loadingCircle = keyframes`
@@ -203,7 +203,7 @@ export const ViewLoader = styled.div`
 
   position: relative;
   &:before {
-    content: '';
+    content: "";
     width: 6px;
     height: 6px;
     border-radius: 50%;
@@ -213,7 +213,8 @@ export const ViewLoader = styled.div`
     top: 37px;
     left: 19px;
     transform: translate(-18px, -18px);
-    animation: ${dotRect} var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+    animation: ${dotRect} var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86)
+      infinite;
   }
   svg {
     display: block;
@@ -231,7 +232,8 @@ export const ViewLoader = styled.div`
     polygon {
       stroke-dasharray: 145 76 145 76;
       stroke-dashoffset: 0;
-      animation: ${pathTriangle} var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+      animation: ${pathTriangle} var(--duration)
+        cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
     }
     rect {
       stroke-dasharray: 192 64 192 64;
@@ -241,7 +243,8 @@ export const ViewLoader = styled.div`
     circle {
       stroke-dasharray: 150 50 150 50;
       stroke-dashoffset: 75;
-      animation: ${pathCircle} var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+      animation: ${pathCircle} var(--duration)
+        cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
     }
   }
   &.triangle {
@@ -249,7 +252,8 @@ export const ViewLoader = styled.div`
     &:before {
       left: 21px;
       transform: translate(-10px, -18px);
-      animation: ${dotTriangle} var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+      animation: ${dotTriangle} var(--duration)
+        cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
     }
   }
 `;
@@ -270,7 +274,7 @@ export const StyledLoader = styled.div`
     animation: pulse 1s linear infinite;
   }
   .loader:after {
-    content: '';
+    content: "";
     position: absolute;
     width: 48px;
     height: 48px;

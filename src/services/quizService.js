@@ -14,9 +14,7 @@ const quizService = {
    */
 
   GetQuiz(fetch) {
-    const [quiz, setQuiz] = useState({
-      quiz: {},
-    });
+    const [quiz, setQuiz] = useState({});
     const { cancellablePromise } = useCancellablePromise();
     const [status, setStatus] = useState(STATUS.LOADING);
     useEffect(() => {
@@ -31,7 +29,7 @@ const quizService = {
     return {
       quiz_loading: status === STATUS.LOADING,
       quiz_error: status === STATUS.ERROR ? status : "",
-      quiz_data: quiz,
+      quiz_data: quiz?.res,
     };
   },
 
@@ -39,9 +37,8 @@ const quizService = {
     let res = await Fetch.get(`${this._url}/getQuiz`);
     if (res.status >= 200 && res.status < 300) {
       res = await res.json();
-      console.log(res);
       return {
-        quiz: res.items,
+        res,
       };
     }
     const { message } = await res.json();

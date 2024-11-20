@@ -22,9 +22,9 @@ export const StyledButton = styled.button`
     (disabled &&
       css`
         cursor: not-allowed;
-        /* background-color: transparent ;
-        border: 1px solid #CDCDCD;
-        color: #CDCDCD; */
+        background-color: #cdcdcd;
+        /* border: 1px solid #cdcdcd; */
+        color: var(--white);
       `)}
 
   ${({ $lg }) =>
@@ -53,6 +53,13 @@ export const StyledButton = styled.button`
     $variant === "primary" &&
     css`
       background: var(--primary);
+      color: var(--white);
+      padding: 14px 27px;
+    `}
+  ${({ $variant }) =>
+    $variant === "gray" &&
+    css`
+      background: #cdcdcd;
       color: var(--white);
       padding: 14px 27px;
     `}
@@ -127,7 +134,8 @@ export const StyledButton = styled.button`
     opacity: 0;
   }
   &:hover {
-    box-shadow: 0px 10.45px 20.22px -6.97px rgba(251, 225, 143, 0.8);
+    box-shadow: ${({ disabled }) =>
+      !disabled && "0px 10.45px 20.22px -6.97px rgba(251, 225, 143, 0.8)"};
     &:before {
       left: 150%;
       opacity: 0.4;

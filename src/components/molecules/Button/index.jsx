@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyledButton } from './Button.styles';
+import React from "react";
+import { StyledButton } from "./Button.styles";
 
 const Button = ({
   children,
@@ -28,7 +28,8 @@ const Button = ({
       $fontSm={fontSm}
       $animation={animation}
       disabled={loader || disabled}
-      {...rest}>
+      {...rest}
+    >
       {loader ? <span class="loader"></span> : children}
     </StyledButton>
   );
