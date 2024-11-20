@@ -3,6 +3,7 @@ import { AuthContextProvider } from "./Context/authContext";
 import GlobalStyles, {
   StyledToastContainer,
 } from "./styles/GlobalStyles.styles";
+import "react-toastify/dist/ReactToastify.min.css";
 import Router from "./Router";
 
 function App() {

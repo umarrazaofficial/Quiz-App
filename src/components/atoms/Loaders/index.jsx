@@ -1,5 +1,5 @@
 import "styled-components";
-import logo from "../../../assets/Logo.png";
+import logo from "../../../assets/Logo.svg";
 import {
   PageLoaderWrapper,
   PageLoader,
@@ -9,7 +9,6 @@ import {
   LoaderWrap,
   BlurBackground,
   ComponentLoaderHolder,
-  ViewLoader,
   StyledLoader,
 } from "./Loaders.styles";
 

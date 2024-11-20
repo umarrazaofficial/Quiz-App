@@ -1,7 +1,7 @@
-import Select from 'react-select';
-import AsyncSelect from 'react-select/async';
-import styled, { css } from 'styled-components';
-import { styles } from '../Input/Input.styles';
+import Select from "react-select";
+import AsyncSelect from "react-select/async";
+import styled, { css } from "styled-components";
+import { styles } from "../Input/Input.styles";
 
 const Styles = css`
   min-width: 100px;
@@ -11,8 +11,9 @@ const Styles = css`
     padding-bottom: 0;
     padding-left: 20px;
     padding-right: 20px;
-    border-color: ${({ error }) => error && 'var(--danger) !important'};
+    border-color: ${({ error }) => error && "var(--danger) !important"};
     box-shadow: none;
+    border-radius: 0;
     @media (min-width: 768px) {
       padding-top: 0;
       padding-bottom: 0;
@@ -31,7 +32,7 @@ const Styles = css`
     }
     &.react-select__control--is-focused,
     &.react-select__control--menu-is-open {
-      border-color: #408f8c;
+      border-color: var(--primary);
     }
   }
   .react-select__placeholder {
@@ -56,7 +57,6 @@ const Styles = css`
   }
   .react-select__menu {
     box-shadow: 3px 18px 44px rgba(176, 183, 195, 0.28);
-    border-radius: 8px;
     border: 1px solid var(--gray-50);
     z-index: 2;
   }
@@ -67,16 +67,16 @@ const Styles = css`
     font-size: 12px;
     &:active {
       color: #f1f1f1;
-      background: var(--dark-green);
+      background: var(--primary);
     }
   }
   .react-select__option--is-focused {
-    color: #f1f1f1;
-    background: rgba(70, 80, 69, 0.5);
+    color: var(--white);
+    background: rgba(252, 200, 34, 0.5);
   }
   .react-select__option--is-selected {
     color: #f1f1f1;
-    background: var(--dark-green);
+    background: var(--primary);
   }
   ${({ isMulti }) =>
     isMulti &&
@@ -94,19 +94,18 @@ const Styles = css`
         text-transform: uppercase;
         &:before,
         &:after {
-          content: '';
+          content: "";
           position: absolute;
           left: 14px;
           top: 50%;
           transform: translateY(-50%);
           border: 1px solid var(--primary);
-          border-radius: 5px;
           width: 16px;
           height: 16px;
         }
         &:after {
-          content: '\\e876';
-          font-family: 'Material Icons Round';
+          content: "\\e876";
+          font-family: "Material Icons Round";
           background: var(--primary);
           opacity: 0;
           visibility: hidden;

@@ -1,12 +1,8 @@
 import React from "react";
+import AddQuizzes from "../components/atoms/AddQuiz";
 
 const AddQuiz = () => {
-  return (
-    <>
-      <div>AddQuiz</div>
-      <div>AddQuiz</div>
-    </>
-  );
+  return <AddQuizzes />;
 };
 
 export default AddQuiz;
