@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { AddQuizWrapper } from "./AddQuiz.style";
 import AddQuizImage from "../../../assets/addQuiz.svg";
 import Field from "../Field";
@@ -28,8 +28,10 @@ const CorrectOptions = [
 ];
 const AddQuizzes = () => {
   const [form] = useForm();
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     const payload = {
       question: e.question,
       options: [e?.option_1, e?.option_2, e?.option_3, e?.option_4],
@@ -49,11 +51,13 @@ const AddQuizzes = () => {
         option_4: "",
         correct_option: "",
       });
+      setLoading(false);
     } catch (error) {
       Toast({
         type: "error",
         message: error.message,
       });
+      setLoading(false);
     }
   };
   return (
@@ -121,7 +125,9 @@ const AddQuizzes = () => {
           >
             <Field />
           </Form.Item>
-          <Button variant="primary">Submit</Button>
+          <Button variant="primary" loader={loading}>
+            Submit
+          </Button>
         </Form>
       </div>
       <div className="col col-2">
